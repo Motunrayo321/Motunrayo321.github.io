@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motunrayo Sanyaolu - Electronics Engineering Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .header-links a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.3rem 0;
+            color: var(--text-light);
+        }
+
+        .skill-category li::before {
+            content: "▹ ";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-card h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tag.hardware { background: #dc2626; }
+        .tag.firmware { background: #7c3aed; }
+        .tag.mechanical { background: #059669; }
+        .tag.iot { background: #ea580c; }
+
+        .project-card .subtitle {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .project-details {
+            margin-top: 1.5rem;
+        }
+
+        .project-details h4 {
+            color: var(--primary);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-details ul {
+            margin-left: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .project-details li {
+            margin-bottom: 0.5rem;
+        }
+
+        .metrics {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .metric-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .media-placeholder {
+            background: var(--bg-alt);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-light);
+            margin: 1.5rem 0;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Expandable Content */
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .expandable-content.expanded {
+            max-height: 5000px;
+            transition: max-height 0.6s ease-in;
+        }
+
+        .read-more-btn {
+            margin-top: 1rem;
+            background: transparent;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more-btn:hover {
+            color: var(--primary-dark);
+        }
+
+        .arrow {
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Motunrayo Sanyaolu</h1>
+        <p>Electronics Engineering | Embedded Systems | Hardware Design</p>
+        <div class="header-links">
+            <a href="mailto:motunrayosanya@gmail.com">Email</a>
+            <a href="https://github.com/motunrayo321" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/makerrayo" target="_blank">LinkedIn</a>
+            <a href="Motunrayo_Sanyaolu_Resume.pdf" target="_blank">Resume</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#featured">Featured Projects</a></li>
+            <li><a href="#all-projects">All Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light);">
+                I'm an Electronics Engineering student at the University of Lagos with a passion for designing embedded systems that solve real-world problems. My experience spans from low-level firmware development in C/C++ to full-system integration of sensors, actuators, and mechanical assemblies. I thrive in the intersection of hardware and software, where I can optimize both PCB layouts and control algorithms to create reliable, efficient solutions. Whether it's improving temperature regulation accuracy to ±0.5°C or reducing system response latency below 100ms, I focus on delivering measurable results through rigorous testing and iterative design.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <ul>
+                        <li>C/C++ Programming</li>
+                        <li>ARM Microcontrollers</li>
+                        <li>ESP32, Arduino, STM32</li>
+                        <li>Bare-Metal & RTOS</li>
+                        <li>FreeRTOS, Zephyr</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Hardware Design</h3>
+                    <ul>
+                        <li>PCB Design (KiCad)</li>
+                        <li>Circuit Simulation (Proteus)</li>
+                        <li>FPGA & Verilog</li>
+                        <li>Communication Protocols</li>
+                        <li>SPI, I²C, UART, CAN, MODBUS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Mechanical Design</h3>
+                    <ul>
+                        <li>Fusion 360, SolidWorks</li>
+                        <li>3D Printing & Prototyping</li>
+                        <li>CNC Machining</li>
+                        <li>Laser Cutting</li>
+                        <li>Mechanical Fabrication</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Testing & Debug</h3>
+                    <ul>
+                        <li>Oscilloscopes</li>
+                        <li>Logic Analyzers</li>
+                        <li>Multimeters</li>
+                        <li>Soldering & Assembly</li>
+                        <li>System Integration Testing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured">
+            <h2>Featured Projects</h2>
+
+            <!-- AquaBot -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>AquaBot: Autonomous Water Collection System</h3>
+                        <p class="subtitle">Rice University | Research & Development Internship</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag firmware">Firmware</span>
+                        <span class="tag mechanical">Mechanical</span>
+                        <span class="tag iot">IoT</span>
+                    </div>
+                </div>
+
+                <p>Designed and developed an IP67-rated autonomous device for automated water collection and analysis from Houston's river systems. This full-cycle embedded systems project integrates mechanical fabrication, electronics design, and firmware development to reduce manual sampling effort by 95%.</p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-value">95%</span>
+                        <span class="metric-label">Reduction in Manual Labor</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">&lt;100ms</span>
+                        <span class="metric-label">Response Latency</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">80kg+</span>
+                        <span class="metric-label">Load Capacity</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">IP67</span>
+                        <span class="metric-label">Water/Dust Rating</span>
+                    </div>
+                </div>
+
+                <div class="media-placeholder">
+                    📸 Add project images/videos here<br>
+                    <small>(Replace this div with img or video tags)</small>
+                </div>
+
+                <div class="project-details">
+                    <h4>Technical Implementation</h4>
+                    <ul>
+                        <li><strong>Embedded Control System:</strong> Developed ESP32-based firmware in C++ integrating stepper motor-driven peristaltic pump with multi-sensor suite via SPI, I²C, UART, and MODBUS protocols</li>
+                        <li><strong>Power & Control Electronics:</strong> Designed custom PCB for power distribution and motor control, optimizing system response latency below 100ms through efficient interrupt handling</li>
+                        <li><strong>Mechanical Design:</strong> CAD design in Fusion 360 and SolidWorks, fabricated using 3D printing, welded aluminum framing, and CNC machining. Frame validated through 80+ kg load testing</li>
+                        <li><strong>Weatherproofing:</strong> Achieved IP67 rating through strategic gasket placement, cable gland routing, and conformal coating of electronics</li>
+                        <li><strong>System Integration:</strong> Full hardware-firmware co-design ensuring reliable autonomous operation under variable outdoor conditions</li>
+                    </ul>
+
+                    <h4>Engineering Process</h4>
+                    <ul>
+                        <li>Applied complete Engineering Design Process from initial research through final prototype delivery</li>
+                        <li>Iterated through low-fidelity (cardboard/foam) and mid-fidelity (3D printed) prototypes with functional testing at each stage</li>
+                        <li>Conducted field testing in real environmental conditions to validate waterproofing and operational reliability</li>
+                        <li>Presented technical solution to professors, CEOs, and industry stakeholders, incorporating feedback into design iterations</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">View on GitHub</a>
+                    <a href="#" class="btn btn-secondary">Technical Documentation</a>
+                </div>
+            </div>
+
+            <!-- NeoBlankey -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>NeoBlankey: Smart Neonatal Heating System</h3>
+                        <p class="subtitle">Unilag Design Studio | Research Intern</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag firmware">Firmware</span>
+                    </div>
+                </div>
+
+                <p>Developed an intelligent portable heating blanket for preventing neonatal hypothermia in low-resource settings. The system uses precision temperature control with closed-loop feedback to maintain optimal warming conditions for premature infants.</p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-value">±0.5°C</span>
+                        <span class="metric-label">Temperature Accuracy</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">40%</span>
+                        <span class="metric-label">System Stability Improvement</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">3.7V</span>
+                        <span class="metric-label">Rechargeable Battery</span>
+                    </div>
+                </div>
+
+                <div class="media-placeholder">
+                    📸 Add project images/videos here<br>
+                    <small>(Replace this div with img or video tags)</small>
+                </div>
+
+                <div class="project-details">
+                    <h4>Technical Implementation</h4>
+                    <ul>
+                        <li><strong>Thermal Control System:</strong> Arduino Nano-based controller managing Peltier module with PID-based closed-loop temperature regulation achieving ±0.5°C accuracy</li>
+                        <li><strong>Sensor Integration:</strong> Real-time temperature monitoring with thermistor array for distributed sensing and safety shutdown mechanisms</li>
+                        <li><strong>Power Management:</strong> Dual 3.7V rechargeable battery system with optimized power consumption algorithm for extended operation in resource-limited environments</li>
+                        <li><strong>Hardware Debugging:</strong> Utilized oscilloscopes and logic analyzers to identify and resolve thermal oscillation issues, improving system stability by 40%</li>
+                        <li><strong>Design for Manufacturing:</strong> Component selection prioritized locally-sourced materials to reduce costs while maintaining medical-grade reliability</li>
+                    </ul>
+
+                    <h4>Key Innovations</h4>
+                    <ul>
+                        <li>Adaptive heating algorithm prevents overheating/underheating through continuous monitoring and adjustment</li>
+                        <li>Lightweight, flexible design ensuring infant comfort and ease of clinical use</li>
+                        <li>Energy-efficient control system maximizes battery life for portable deployment</li>
+                        <li>Safe alternative to conventional incubators for emergency care and transport scenarios</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">View on GitHub</a>
+                    <a href="#" class="btn btn-secondary">Patent Description</a>
+                </div>
+            </div>
+
+            <!-- Smart Building -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Smart Building IoT Prototype</h3>
+                        <p class="subtitle">NITDA IT Hub | IoT Ecosystem Lead</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag iot">IoT</span>
+                        <span class="tag firmware">Firmware</span>
+                        <span class="tag mechanical">Mechanical</span>
+                    </div>
+                </div>
+
+                <p>Led a team of 6 engineers in developing a 50×50×30cm smart building prototype demonstrating modern IoT automation, energy efficiency, and security systems. The modular design achieved 80% automation of lighting, HVAC, and access control systems.</p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-value">80%</span>
+                        <span class="metric-label">Automation Coverage</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">6</span>
+                        <span class="metric-label">Team Members Led</span>
+                    </div>
+                </div>
+
+                <div class="media-placeholder">
+                    📸 Add project images/videos here<br>
+                    <small>(Replace this div with img or video tags)</small>
+                </div>
+
+                <div class="project-details">
+                    <h4>System Architecture</h4>
+                    <ul>
+                        <li><strong>Automated Lighting:</strong> Motion detection and ambient light sensors with ESP32 control for energy-optimized illumination</li>
+                        <li><strong>Climate Control:</strong> Temperature and humidity monitoring with automated ventilation system maintaining comfort parameters</li>
+                        <li><strong>Security System:</strong> RFID and fingerprint-based access control with real-time logging and remote monitoring</li>
+                        <li><strong>IoT Integration:</strong> WiFi-enabled remote control and monitoring interface for all building systems</li>
+                        <li><strong>Modular Design:</strong> 3D printed modular components with LEGO-style assembly to accommodate small printer build volume</li>
+                    </ul>
+
+                    <h4>Leadership & Project Management</h4>
+                    <ul>
+                        <li>Coordinated weekly strategy meetings and task delegation across electrical, firmware, and mechanical teams</li>
+                        <li>Conducted technical training sessions on IoT protocols, sensor integration, and embedded systems design</li>
+                        <li>Managed project timeline and deliverables, ensuring seamless integration of subsystems</li>
+                        <li>Established testing protocols and quality standards for system validation</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">View Project Details</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="all-projects">
+            <h2>Additional Projects</h2>
+
+            <!-- LeRobot -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>LeRobot: Chess-Playing Robotic Arm</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag firmware">Firmware</span>
+                    </div>
+                </div>
+                <p>Programmed robotic arm with computer vision integration to autonomously play chess. Implemented inverse kinematics algorithms and trajectory planning for precise piece manipulation.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Inverse Kinematics:</strong> Developed 6-DOF solver for precise end-effector positioning. Implemented analytical and numerical methods for joint angle calculation based on desired chess piece positions</li>
+                            <li><strong>Computer Vision:</strong> Integrated camera system with OpenCV for real-time chess board recognition and piece detection. Color-based segmentation and contour detection for accurate board state tracking</li>
+                            <li><strong>Trajectory Planning:</strong> Programmed smooth motion paths avoiding collisions with other pieces. Implemented cubic spline interpolation for natural arm movement</li>
+                            <li><strong>Game Logic Integration:</strong> Connected to chess engine for move calculation and strategy. Serial communication between vision system, chess engine, and arm controller</li>
+                            <li><strong>Gripper Control:</strong> Designed servo-actuated gripper with force feedback for gentle piece handling. Adjustable grip pressure based on piece detection</li>
+                        </ul>
+
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Successfully played full chess games with 95%+ move accuracy</li>
+                            <li>Real-time board state recognition with <500ms latency</li>
+                            <li>Collision-free path planning for complex board configurations</li>
+                            <li>Demonstrated at university tech showcase with live gameplay</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laser Tag -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Laser Tag Gaming System</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag firmware">Firmware</span>
+                    </div>
+                </div>
+                <p>Designed IR-based laser tag system with Arduino control. Created custom web interface for game logic, scoring, and sound effects. Integrated IR transmitter/receiver circuits for hit detection.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>IR Communication:</strong> Designed modulated IR transmitter circuit using 38kHz carrier frequency for reliable signal transmission. IR receiver with TSOP sensor for noise immunity and daylight rejection</li>
+                            <li><strong>Game Controller:</strong> Arduino-based system managing multiple gun units and target sensors. Implemented unique player ID encoding in IR signals for multi-player support</li>
+                            <li><strong>Web Interface:</strong> Created responsive web dashboard using HTML, CSS, and JavaScript for real-time scoreboard, game modes, and player statistics. WebSocket communication for instant score updates</li>
+                            <li><strong>Sound Effects:</strong> Integrated DFPlayer Mini module for trigger sounds, hit confirmation, and game events. MP3 playback synchronized with game actions</li>
+                            <li><strong>Power Management:</strong> Designed efficient power circuits for extended gameplay. Rechargeable Li-ion batteries with low-battery indicators</li>
+                        </ul>
+
+                        <h4>Game Features</h4>
+                        <ul>
+                            <li>Multiple game modes: Free-for-all, Team Deathmatch, Capture the Flag</li>
+                            <li>Configurable health points and respawn timers</li>
+                            <li>Real-time leaderboard with kill/death ratios</li>
+                            <li>Vibration feedback on successful hits</li>
+                            <li>Adjustable difficulty levels with variable shot accuracy requirements</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View on GitHub</a>
+                        <a href="#" class="btn btn-secondary">Play Web Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dentist's Mirror -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Dentist's Articulating Mirror</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag mechanical">Mechanical</span>
+                        <span class="tag firmware">Firmware</span>
+                    </div>
+                </div>
+                <p>Engineered servo-controlled dental mirror with 2-link mechanism for precise positioning. Designed shoulder joint mechanism in Fusion 360 with dual-servo actuation for multi-axis control.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Mechanical Design:</strong> Two-link articulated mechanism with 2 degrees of freedom for optimal mirror positioning. Designed in Fusion 360 with consideration for compact workspace navigation inside oral cavity</li>
+                            <li><strong>Servo Integration:</strong> Dual micro-servo system for independent joint control. Implemented smooth motion profiles to prevent patient discomfort during adjustment</li>
+                            <li><strong>Control System:</strong> Arduino-based controller with joystick interface for intuitive dentist operation. Real-time position feedback for precise angle adjustments</li>
+                            <li><strong>Material Selection:</strong> Medical-grade stainless steel for sterilization compatibility. Lightweight design minimizing hand fatigue during extended procedures</li>
+                            <li><strong>Mirror Mount:</strong> Quick-release mechanism for easy mirror replacement and cleaning. Adjustable grip pressure to accommodate different mirror sizes</li>
+                        </ul>
+
+                        <h4>Design Considerations</h4>
+                        <ul>
+                            <li>Compact form factor fitting comfortably in oral cavity</li>
+                            <li>Smooth servo movements preventing sudden jerks near sensitive tissue</li>
+                            <li>Waterproof electronics enclosure for cleaning and sterilization</li>
+                            <li>Ergonomic control placement for dentist convenience</li>
+                            <li>Range of motion optimized for common dental examination angles</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View CAD Files</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hog Cooling -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Automated Hog Cooling System</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag iot">IoT</span>
+                        <span class="tag hardware">Hardware</span>
+                    </div>
+                </div>
+                <p>Developed ESP32-based livestock cooling system with temperature/humidity sensing and servo-actuated water distribution. Implemented automated hose positioning algorithm for uniform cooling coverage.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Environmental Monitoring:</strong> DHT22 sensor for real-time temperature and humidity tracking. Continuous data logging to identify heat stress patterns in livestock</li>
+                            <li><strong>Water Distribution:</strong> Peristaltic pump controlled by ESP32 for precise water flow management. Solenoid valve for on/off control based on temperature thresholds</li>
+                            <li><strong>Servo-Actuated Hose:</strong> Pan-tilt mechanism using dual servos for sweeping water spray pattern. Programmed sequence ensuring all animals receive cooling coverage</li>
+                            <li><strong>Smart Algorithm:</strong> Adaptive cooling schedule based on ambient conditions. Increased frequency during peak heat hours, reduced during cooler periods</li>
+                            <li><strong>IoT Connectivity:</strong> WiFi-enabled remote monitoring via web dashboard. Alert notifications when environmental conditions exceed safe thresholds</li>
+                        </ul>
+
+                        <h4>System Benefits</h4>
+                        <ul>
+                            <li>Reduced heat stress in livestock improving health and productivity</li>
+                            <li>Water conservation through targeted, need-based cooling</li>
+                            <li>Remote farm monitoring reducing manual labor requirements</li>
+                            <li>Data analytics for optimizing cooling schedules</li>
+                            <li>Scalable design for different farm sizes</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solar Street Light -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Solar Motion-Sensing Street Light</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                    </div>
+                </div>
+                <p>Designed analog solar-powered street lighting system without microcontroller. Implemented PIR motion detection with discrete component circuitry for energy-efficient operation.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Fully Analog Design:</strong> No microcontroller used - pure analog circuitry for maximum reliability and minimal power consumption. Transistor-based switching and timing circuits</li>
+                            <li><strong>Solar Charging:</strong> 12V solar panel with charge controller circuit preventing battery overcharge/overdischarge. MOSFET-based PWM charging for optimal battery life</li>
+                            <li><strong>PIR Motion Detection:</strong> Passive infrared sensor triggering high-brightness mode when motion detected. Adjustable sensitivity and time delay using potentiometers</li>
+                            <li><strong>Dual Brightness Mode:</strong> Dim LED operation during standby (10% brightness), full brightness (100%) when motion detected. Significant energy savings while maintaining visibility</li>
+                            <li><strong>Battery Management:</strong> Lead-acid/Li-ion battery with undervoltage protection. Automatic dusk-to-dawn operation using LDR light sensor</li>
+                        </ul>
+
+                        <h4>Design Features</h4>
+                        <ul>
+                            <li>Zero programming required - pure hardware solution</li>
+                            <li>Low maintenance with robust analog components</li>
+                            <li>Extended battery life through intelligent power management</li>
+                            <li>Weather-resistant enclosure for outdoor installation</li>
+                            <li>Cost-effective solution for off-grid lighting applications</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View Circuit Schematic</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 555 Disco Bulb -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>555 Timer Disco Bulb</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag mechanical">Mechanical</span>
+                    </div>
+                </div>
+                <p>Created decorative lighting effect using 555 timer IC and discrete components. Custom 3D printed enclosure with integrated button battery power supply.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>555 Timer Circuit:</strong> Astable multivibrator configuration generating rhythmic LED patterns. Adjustable frequency through resistor-capacitor network for different flash rates</li>
+                            <li><strong>LED Array:</strong> Multiple RGB LEDs arranged in artistic pattern for visual effect. Series resistors for current limiting and uniform brightness</li>
+                            <li><strong>Compact Power:</strong> Button cell battery (CR2032) providing portable power. Low-power design maximizing battery life (20+ hours continuous operation)</li>
+                            <li><strong>3D Printed Enclosure:</strong> Custom-designed decorative housing in Fusion 360. Translucent PLA material for diffused light effect. Snap-fit assembly for easy battery replacement</li>
+                            <li><strong>Pattern Generation:</strong> Multiple 555 timers cascaded for complex lighting sequences. Variable duty cycles creating interesting visual rhythms</li>
+                        </ul>
+
+                        <h4>Design Highlights</h4>
+                        <ul>
+                            <li>Minimalist circuit design with <10 components</li>
+                            <li>No programming required - pure analog elegance</li>
+                            <li>Artistic enclosure design showcasing mechanical skills</li>
+                            <li>Perfect demonstration of fundamental electronics principles</li>
+                            <li>Portable party/ambient lighting solution</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View Circuit & CAD</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microbial Fuel Cell -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Microbial Fuel Cell System</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                    </div>
+                </div>
+                <p>Researched and developed soil-to-electricity conversion system. Designed automated monitoring and characterization setup with complete CAD assembly and animation in Fusion 360.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Fuel Cell Design:</strong> Dual-chamber microbial fuel cell with proton exchange membrane. Anode chamber containing soil microorganisms, cathode chamber exposed to oxygen. Graphite electrodes for optimal electron transfer</li>
+                            <li><strong>Automated Monitoring:</strong> Arduino-based data acquisition system measuring voltage, current, and power output. Real-time logging to SD card for analysis and optimization</li>
+                            <li><strong>Environmental Control:</strong> Temperature and pH monitoring affecting microbial activity. Automated alerts when conditions drift from optimal ranges</li>
+                            <li><strong>Mechanical System:</strong> Complete assembly designed in Fusion 360 including fuel cell housing, electrode mounting, and fluid management. Modular design for easy electrode replacement and cleaning</li>
+                            <li><strong>Visualization:</strong> Created detailed assembly animation showing internal components and operation principles. Used for presentations and educational purposes</li>
+                        </ul>
+
+                        <h4>Research Outcomes</h4>
+                        <ul>
+                            <li>Successfully generated measurable electricity from soil bacteria</li>
+                            <li>Characterized power output under various soil compositions and moisture levels</li>
+                            <li>Identified optimal operating conditions for maximum efficiency</li>
+                            <li>Explored potential for sustainable, off-grid power generation</li>
+                            <li>Comprehensive documentation for future research iterations</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View Research Data</a>
+                        <a href="#" class="btn btn-secondary">Watch Animation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Theft Alarm -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Car Theft Alarm System</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                    </div>
+                </div>
+                <p>Simulated GSM-based vehicle security system in Proteus with Arduino and SIM module integration for remote alert notifications.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Sensor Integration:</strong> Multiple intrusion detection sensors including door switches, vibration sensors, and motion detectors. Combined sensor logic for intelligent threat assessment</li>
+                            <li><strong>GSM Communication:</strong> SIM800/SIM900 module for SMS alert transmission. AT command interface for sending location and alarm status to owner's phone</li>
+                            <li><strong>Arduino Control:</strong> Central microcontroller processing sensor inputs and managing alert logic. State machine implementation for different alarm modes (armed, disarmed, triggered)</li>
+                            <li><strong>Proteus Simulation:</strong> Complete system simulated and validated in Proteus before hardware implementation. Virtual testing of all sensor scenarios and GSM responses</li>
+                            <li><strong>Power Management:</strong> Vehicle battery integration with voltage regulation. Backup battery for continued operation if main power disconnected</li>
+                        </ul>
+
+                        <h4>Security Features</h4>
+                        <ul>
+                            <li>Instant SMS notification when unauthorized access detected</li>
+                            <li>Remote arm/disarm capability via SMS commands</li>
+                            <li>GPS location tracking in alert messages</li>
+                            <li>Siren activation to deter thieves</li>
+                            <li>Tamper detection for system sabotage attempts</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View Proteus Simulation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Joystick Game -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Joystick Game Controller</h3>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag firmware">Firmware</span>
+                    </div>
+                </div>
+                <p>Developed Arduino-based paddle game inspired by classic Blackberry ball mechanics. Implemented Processing GUI for responsive gameplay visualization.</p>
+                
+                <button class="btn read-more-btn" onclick="toggleExpand(this)">
+                    Read More <span class="arrow">▼</span>
+                </button>
+
+                <div class="expandable-content">
+                    <div class="media-placeholder">
+                        📸 Add project images/videos here<br>
+                        <small>(Replace this div with img or video tags)</small>
+                    </div>
+
+                    <div class="project-details">
+                        <h4>Technical Implementation</h4>
+                        <ul>
+                            <li><strong>Joystick Interface:</strong> Analog joystick connected to Arduino reading X-Y position. Smooth paddle control through analog-to-digital conversion and calibration</li>
+                            <li><strong>Serial Communication:</strong> Real-time data transmission between Arduino and Processing at 115200 baud. Minimal latency protocol for responsive gameplay</li>
+                            <li><strong>Game Physics:</strong> Implemented in Processing with realistic ball bouncing mechanics. Collision detection with paddle and walls using vector mathematics</li>
+                            <li><strong>Visual Design:</strong> Custom graphics and animations in Processing. Smooth 60 FPS rendering with particle effects on impacts</li>
+                            <li><strong>Scoring System:</strong> Progressive difficulty with increasing ball speed. High score tracking and level progression</li>
+                        </ul>
+
+                        <h4>Game Features</h4>
+                        <ul>
+                            <li>Intuitive analog joystick control for natural gameplay feel</li>
+                            <li>Multiple levels with increasing difficulty</li>
+                            <li>Sound effects for hits, misses, and level completion</li>
+                            <li>Visual feedback for successful paddle hits</li>
+                            <li>Pause/resume functionality and score display</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">View on GitHub</a>
+                        <a href="#" class="btn btn-secondary">Play Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1.5rem;">
+                I'm actively seeking internship opportunities in electronics, embedded systems, and hardware engineering. If you're working on challenging problems at the intersection of hardware and software, I'd love to hear from you.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="mailto:motunrayosanya@gmail.com" class="btn btn-primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/makerrayo" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                <a href="https://github.com/motunrayo321" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Motunrayo Sanyaolu | Built with passion for electronics and embedded systems</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Lagos, Nigeria | <a href="mailto:motunrayosanya@gmail.com">motunrayosanya@gmail.com</a></p>
+    </footer>
+
+    <script>
+        function toggleExpand(button) {
+            const card = button.closest('.project-card');
+            const content = card.querySelector('.expandable-content');
+            const arrow = button.querySelector('.arrow');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                arrow.classList.remove('rotated');
+                button.innerHTML = 'Read More <span class="arrow">▼</span>';
+            } else {
+                content.classList.add('expanded');
+                arrow.classList.add('rotated');
+                button.innerHTML = 'Read Less <span class="arrow rotated">▼</span>';
+            }
+        }
+    </script>
+</body>
+</html>

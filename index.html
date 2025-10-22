@@ -1,101 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IoT & Embedded Systems Portfolio</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motunrayo Sanyaolu - Electronics Engineering Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .header-links a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.3rem 0;
+            color: var(--text-light);
+        }
+
+        .skill-category li::before {
+            content: "▹ ";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-card h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tag.hardware { background: #dc2626; }
+        .tag.firmware { background: #7c3aed; }
+        .tag.mechanical { background: #059669; }
+        .tag.iot { background: #ea580c; }
+
+        .project-card .subtitle {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .project-details {
+            margin-top: 1.5rem;
+        }
+
+        .project-details h4 {
+            color: var(--primary);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-details ul {
+            margin-left: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .project-details li {
+            margin-bottom: 0.5rem;
+        }
+
+        .metrics {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .metric-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .media-placeholder {
+            background: var(--bg-alt);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-light);
+            margin: 1.5rem 0;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
     <header>
-      <nav>
-        <div class="nav-content">
-          <h1>Motunrayo's Portfolio</h1>
-          <ul>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        <h1>Motunrayo Sanyaolu</h1>
+        <p>Electronics Engineering | Embedded Systems | Hardware Design</p>
+        <div class="header-links">
+            <a href="mailto:motunrayosanya@gmail.com">Email</a>
+            <a href="https://github.com/motunrayo321" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/makerrayo" target="_blank">LinkedIn</a>
+            <a href="Motunrayo_Sanyaolu_Resume.pdf" target="_blank">Resume</a>
         </div>
-      </nav>
     </header>
 
-    <main>
-      <section id="hero">
-        <div class="hero-content">
-          <h1>Welcome to My Portfolio</h1>
-          <p>Embedded Systems & IoT Developer</p>
-        </div>
-      </section>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#featured">Featured Projects</a></li>
+            <li><a href="#all-projects">All Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-      <section id="projects">
-        <h2>Projects</h2>
-        <div id="projects-grid">
-          <div class="project-card">
-            <img src="data:image/jpeg;base64,/9j…JBSfZWp/Wn+GKXvePKKMPb/2Q==" alt="NeoBlankey - Multifunctional Heating Infant Warmer">
-            <h3>NeoBlankey - Multifunctional Heating Infant Warmer</h3>
-            <p>
-              "NeoBlankey is a smart heating blanket designed to prevent hypothermia in premature babies. It uses an microcontroller to regulate temperature with a heating module and temperature sensor, ensuring safe and stable warming. The device is rechargeable, making it portable for use in low-resource settings. NeoBlankey aims to provide an affordable, energy-efficient solution for neonatal care."
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light);">
+                I'm an Electronics Engineering student at the University of Lagos with a passion for designing embedded systems that solve real-world problems. My experience spans from low-level firmware development in C/C++ to full-system integration of sensors, actuators, and mechanical assemblies. I thrive in the intersection of hardware and software, where I can optimize both PCB layouts and control algorithms to create reliable, efficient solutions. Whether it's improving temperature regulation accuracy to ±0.5°C or reducing system response latency below 100ms, I focus on delivering measurable results through rigorous testing and iterative design.
             </p>
-            <p>
-              <a href="https://github.com/Motunrayo321/NeoBlankey" target="_blank">GitHub Repository</a>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <ul>
+                        <li>C/C++ Programming</li>
+                        <li>ARM Microcontrollers</li>
+                        <li>ESP32, Arduino, STM32</li>
+                        <li>Bare-Metal & RTOS</li>
+                        <li>FreeRTOS, Zephyr</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Hardware Design</h3>
+                    <ul>
+                        <li>PCB Design (KiCad)</li>
+                        <li>Circuit Simulation (Proteus)</li>
+                        <li>FPGA & Verilog</li>
+                        <li>Communication Protocols</li>
+                        <li>SPI, I²C, UART, CAN, MODBUS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Mechanical Design</h3>
+                    <ul>
+                        <li>Fusion 360, SolidWorks</li>
+                        <li>3D Printing & Prototyping</li>
+                        <li>CNC Machining</li>
+                        <li>Laser Cutting</li>
+                        <li>Mechanical Fabrication</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Testing & Debug</h3>
+                    <ul>
+                        <li>Oscilloscopes</li>
+                        <li>Logic Analyzers</li>
+                        <li>Multimeters</li>
+                        <li>Soldering & Assembly</li>
+                        <li>System Integration Testing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured">
+            <h2>Featured Projects</h2>
+
+            <!-- AquaBot -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>AquaBot: Autonomous Water Collection System</h3>
+                        <p class="subtitle">Rice University | Research & Development Internship</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag firmware">Firmware</span>
+                        <span class="tag mechanical">Mechanical</span>
+                        <span class="tag iot">IoT</span>
+                    </div>
+                </div>
+
+                <p>Designed and developed an IP67-rated autonomous device for automated water collection and analysis from Houston's river systems. This full-cycle embedded systems project integrates mechanical fabrication, electronics design, and firmware development to reduce manual sampling effort by 95%.</p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-value">95%</span>
+                        <span class="metric-label">Reduction in Manual Labor</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">&lt;100ms</span>
+                        <span class="metric-label">Response Latency</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">80kg+</span>
+                        <span class="metric-label">Load Capacity</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">IP67</span>
+                        <span class="metric-label">Water/Dust Rating</span>
+                    </div>
+                </div>
+
+                <div class="media-placeholder">
+                    📸 Add project images/videos here<br>
+                    <small>(Replace this div with img or video tags)</small>
+                </div>
+
+                <div class="project-details">
+                    <h4>Technical Implementation</h4>
+                    <ul>
+                        <li><strong>Embedded Control System:</strong> Developed ESP32-based firmware in C++ integrating stepper motor-driven peristaltic pump with multi-sensor suite via SPI, I²C, UART, and MODBUS protocols</li>
+                        <li><strong>Power & Control Electronics:</strong> Designed custom PCB for power distribution and motor control, optimizing system response latency below 100ms through efficient interrupt handling</li>
+                        <li><strong>Mechanical Design:</strong> CAD design in Fusion 360 and SolidWorks, fabricated using 3D printing, welded aluminum framing, and CNC machining. Frame validated through 80+ kg load testing</li>
+                        <li><strong>Weatherproofing:</strong> Achieved IP67 rating through strategic gasket placement, cable gland routing, and conformal coating of electronics</li>
+                        <li><strong>System Integration:</strong> Full hardware-firmware co-design ensuring reliable autonomous operation under variable outdoor conditions</li>
+                    </ul>
+
+                    <h4>Engineering Process</h4>
+                    <ul>
+                        <li>Applied complete Engineering Design Process from initial research through final prototype delivery</li>
+                        <li>Iterated through low-fidelity (cardboard/foam) and mid-fidelity (3D printed) prototypes with functional testing at each stage</li>
+                        <li>Conducted field testing in real environmental conditions to validate waterproofing and operational reliability</li>
+                        <li>Presented technical solution to professors, CEOs, and industry stakeholders, incorporating feedback into design iterations</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">View on GitHub</a>
+                    <a href="#" class="btn btn-secondary">Technical Documentation</a>
+                </div>
+            </div>
+
+            <!-- NeoBlankey -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>NeoBlankey: Smart Neonatal Heating System</h3>
+                        <p class="subtitle">Unilag Design Studio | Research Intern</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag hardware">Hardware</span>
+                        <span class="tag firmware">Firmware</span>
+                    </div>
+                </div>
+
+                <p>Developed an intelligent portable heating blanket for preventing neonatal hypothermia in low-resource settings. The system uses precision temperature control with closed-loop feedback to maintain optimal warming conditions for premature infants.</p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-value">±0.5°C</span>
+                        <span class="metric-label">Temperature Accuracy</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">40%</span>
+                        <span class="metric-label">System Stability Improvement</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">3.7V</span>
+                        <span class="metric-label">Rechargeable Battery</span>
+                    </div>
+                </div>
+
+                <div class="media-placeholder">
+                    📸 Add project images/videos here<br>
+                    <small>(Replace this div with img or video tags)</small>
+                </div>
+
+                <div class="project-details">
+                    <h4>Technical Implementation</h4>
+                    <ul>
+                        <li><strong>Thermal Control System:</strong> Arduino Nano-based controller managing Peltier module with PID-based closed-loop temperature regulation achieving ±0.5°C accuracy</li>
+                        <li><strong>Sensor Integration:</strong> Real-time temperature monitoring with thermistor array for distributed sensing and safety shutdown mechanisms</li>
+                        <li><strong>Power Management:</strong> Dual 3.7V rechargeable battery system with optimized power consumption algorithm for extended operation in resource-limited environments</li>
+                        <li><strong>Hardware Debugging:</strong> Utilized oscilloscopes and logic analyzers to identify and resolve thermal oscillation issues, improving system stability by 40%</li>
+                        <li><strong>Design for Manufacturing:</strong> Component selection prioritized locally-sourced materials to reduce costs while maintaining medical-grade reliability</li>
+                    </ul>
+
+                    <h4>Key Innovations</h4>
+                    <ul>
+                        <li>Adaptive heating algorithm prevents overheating/underheating through continuous monitoring and adjustment</li>
+                        <li>Lightweight, flexible design ensuring infant comfort and ease of clinical use</li>
+                        <li>Energy-efficient control system maximizes battery life for portable deployment</li>
+                        <li>Safe alternative to conventional incubators for emergency care and transport scenarios</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">View on GitHub</a>
+                    <a href="#" class="btn btn-secondary">Patent Description</a>
+                </div>
+            </div>
+
+            <!-- Smart Building -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <h3>Smart Building IoT Prototype</h3>
+                        <p class="subtitle">NITDA IT Hub | IoT Ecosystem Lead</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag iot">IoT</span>
+                        <span class="tag firmware">Firmware</span>
+                        <span class="tag mechanical">Mechanical</span>
+                    </div>
+                </div>
+
+                <p>Led a team of 6 engineers in developing a 50×50×30cm smart building prototype demonstrating modern IoT automation, energy efficiency, and security systems. The modular design achieved 80% automation of lighting, HVAC, and access control systems.</p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-value">80%</span>
+                        <span class="metric-label">Automation Coverage</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">6</span>
+                        <span class="metric-label">Team Members Led</span>
+                    </div>
+                </div>
+
+                <div class="media-placeholder">
+                    📸 Add project images/videos here<br>
+                    <small>(Replace this div with img or video tags)</small>
+                </div>
+
+                <div class="project-details">
+                    <h4>System Architecture</h4>
+                    <ul>
+                        <li><strong>Automated Lighting:</strong> Motion detection and ambient light sensors with ESP32 control for energy-optimized illumination</li>
+                        <li><strong>Climate Control:</strong> Temperature and humidity monitoring with automated ventilation system maintaining comfort parameters</li>
+                        <li><strong>Security System:</strong> RFID and fingerprint-based access control with real-time logging and remote monitoring</li>
+                        <li><strong>IoT Integration:</strong> WiFi-enabled remote control and monitoring interface for all building systems</li>
+                        <li><strong>Modular Design:</strong> 3D printed modular components with LEGO-style assembly to accommodate small printer build volume</li>
+                    </ul>
+
+                    <h4>Leadership & Project Management</h4>
+                    <ul>
+                        <li>Coordinated weekly strategy meetings and task delegation across electrical, firmware, and mechanical teams</li>
+                        <li>Conducted technical training sessions on IoT protocols, sensor integration, and embedded systems design</li>
+                        <li>Managed project timeline and deliverables, ensuring seamless integration of subsystems</li>
+                        <li>Established testing protocols and quality standards for system validation</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">View Project Details</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="all-projects">
+            <h2>Additional Projects</h2>
+
+            <div class="project-card">
+                <h3>LeRobot: Chess-Playing Robotic Arm</h3>
+                <div class="project-tags">
+                    <span class="tag hardware">Hardware</span>
+                    <span class="tag firmware">Firmware</span>
+                </div>
+                <p>Programmed robotic arm with computer vision integration to autonomously play chess. Implemented inverse kinematics algorithms and trajectory planning for precise piece manipulation.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Laser Tag Gaming System</h3>
+                <div class="project-tags">
+                    <span class="tag hardware">Hardware</span>
+                    <span class="tag firmware">Firmware</span>
+                </div>
+                <p>Designed IR-based laser tag system with Arduino control. Created custom web interface for game logic, scoring, and sound effects. Integrated IR transmitter/receiver circuits for hit detection.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Dentist's Articulating Mirror</h3>
+                <div class="project-tags">
+                    <span class="tag mechanical">Mechanical</span>
+                    <span class="tag firmware">Firmware</span>
+                </div>
+                <p>Engineered servo-controlled dental mirror with 2-link mechanism for precise positioning. Designed shoulder joint mechanism in Fusion 360 with dual-servo actuation for multi-axis control.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Automated Hog Cooling System</h3>
+                <div class="project-tags">
+                    <span class="tag iot">IoT</span>
+                    <span class="tag hardware">Hardware</span>
+                </div>
+                <p>Developed ESP32-based livestock cooling system with temperature/humidity sensing and servo-actuated water distribution. Implemented automated hose positioning algorithm for uniform cooling coverage.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Solar Motion-Sensing Street Light</h3>
+                <div class="project-tags">
+                    <span class="tag hardware">Hardware</span>
+                </div>
+                <p>Designed analog solar-powered street lighting system without microcontroller. Implemented PIR motion detection with discrete component circuitry for energy-efficient operation.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>555 Timer Disco Bulb</h3>
+                <div class="project-tags">
+                    <span class="tag hardware">Hardware</span>
+                    <span class="tag mechanical">Mechanical</span>
+                </div>
+                <p>Created decorative lighting effect using 555 timer IC and discrete components. Custom 3D printed enclosure with integrated button battery power supply.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Microbial Fuel Cell System</h3>
+                <div class="project-tags">
+                    <span class="tag hardware">Hardware</span>
+                </div>
+                <p>Researched and developed soil-to-electricity conversion system. Designed automated monitoring and characterization setup with complete CAD assembly and animation in Fusion 360.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Car Theft Alarm System</h3>
+                <div class="project-tags">
+                    <span class="tag hardware">Hardware</span>
+                </div>
+                <p>Simulated GSM-based vehicle security system in Proteus with Arduino and SIM module integration for remote alert notifications.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Joystick Game Controller</h3>
+                <div class="project-tags">
+                    <span class="tag firmware">Firmware</span>
+                </div>
+                <p>Developed Arduino-based paddle game inspired by classic Blackberry ball mechanics. Implemented Processing GUI for responsive gameplay visualization.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1.5rem;">
+                I'm actively seeking internship opportunities in electronics, embedded systems, and hardware engineering. If you're working on challenging problems at the intersection of hardware and software, I'd love to hear from you.
             </p>
-          </div>
-        </div>
-        <button id="add-project" class="add-button">Add New Project</button>
-      </section>
-
-      <section id="skills">
-        <h2>Skills</h2>
-        <div id="skills-container"></div>
-        <button id="add-skill" class="add-button">Add New Skill</button>
-      </section>
-
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-info">
-          <p>Get in touch with me:</p>
-          <a href="https://wa.me/+2347059498500" class="contact-button">Whatsapp</a>
-          <a href="https://github.com/Motunrayo321" class="contact-button">Github</a>
-          <a href="https://www.linkedin.com/in/sanyaolu-motunrayo321" class="contact-button">LinkedIn</a>
-          <a href="mailto:motunrayosanya.email@example.com" class="contact-button">Email Me</a>
-        </div>
-      </section>
-    </main>
-
-    <div id="project-modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Add New Project</h2>
-        <form id="project-form">
-          <input type="text" id="project-title" placeholder="Project Title" required>
-          <textarea id="project-description" placeholder="Project Description" required></textarea>
-          <input type="text" id="project-github" placeholder="GitHub Repository URL">
-          <input type="file" id="project-images" accept="image/*" multiple>
-          <textarea id="project-code" placeholder="Code Snippets"></textarea>
-          <button type="submit">Add Project</button>
-        </form>
-      </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="mailto:motunrayosanya@gmail.com" class="btn btn-primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/makerrayo" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                <a href="https://github.com/motunrayo321" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </section>
     </div>
 
-    <div id="skill-modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Add New Skill</h2>
-        <form id="skill-form">
-          <input type="text" id="skill-name" placeholder="Skill Name" required>
-          <input type="text" id="skill-link" placeholder="Related Link">
-          <select id="skill-category">
-            <option value="embedded">Embedded Systems</option>
-            <option value="iot">IoT</option>
-            <option value="programming">Programming</option>
-            <option value="other">Other</option>
-          </select>
-          <button type="submit">Add Skill</button>
-        </form>
-      </div>
-    </div>
-
-    <script type="module" src="/main.js"></script>
-  </body>
+    <footer>
+        <p>&copy; 2025 Motunrayo Sanyaolu | Built with passion for electronics and embedded systems</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Lagos, Nigeria | <a href="mailto:motunrayosanya@gmail.com">motunrayosanya@gmail.com</a></p>
+    </footer>
+</body>
 </html>
